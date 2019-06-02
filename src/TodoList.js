@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import {Input, Button, List} from 'antd';
-import store from './store/store'
+import store from './store/store';
+import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from './store/actionTypes'
 
 // const data = [
 //   'RRRRRR  RRRRRRRRRRR  RRRRRRR',
@@ -14,7 +15,6 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = store.getState()
-    console.log(this.state)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleStoreChange = this.handleStoreChange.bind(this)
     this.handleBtnClick = this.handleBtnClick.bind(this)
@@ -42,19 +42,18 @@ class TodoList extends Component {
 
   handleInputChange(e) {
     const action = {
-      type: 'change_input_value',
+      type: 'CHANGE_INPUT_VALUE',
       value: e.target.value
     }
     store.dispatch(action)
   }
   handleStoreChange() {
-    console.log("store Change")
     this.setState(store.getState()) //当感知到store发生变化后 重新获取一遍数据(获取到了newState) 然后更新视图
   }
 
   handleBtnClick() {
     const action = {
-      type: 'change_list_value',
+      type: 'ADD_TODO_ITEM',
       value: this.state.inputValue
     }
     store.dispatch(action)
@@ -62,7 +61,7 @@ class TodoList extends Component {
 
   handleItemDelete(index) {
     const action = {
-      type: 'delete_todo_item',
+      type: 'DELETE_TODO_ITEM',
       index
     }
     store.dispatch(action)
