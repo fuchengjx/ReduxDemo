@@ -1,3 +1,17 @@
+### 简介
+
+这是一个react-redux做的 todolist 小demo
+
+#### redux学习笔记
+
+createStore  可以帮助我们创建一个store
+
+store.dispatch  帮助我们派发action 这个action会传递给store
+
+store.getState  获取到store里面所有的数据内容
+
+store.subscribe  可以让我们订阅(监听) store的改变 只要store发生改变， 这个方法的回调函数就会执行。
+
 <<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
