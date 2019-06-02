@@ -34,7 +34,7 @@ class TodoList extends Component {
           style={{marginTop: '10px', width:'300px'}}
           bordered
           dataSource={this.state.list}
-          renderItem={item => (<List.Item>{item}</List.Item>)}>
+          renderItem={(item, index) => (<List.Item onClick={this.handleItemDelete.bind(this, index)}>{item}</List.Item>)}>
         </List>
       </div>
     )
@@ -46,7 +46,6 @@ class TodoList extends Component {
       value: e.target.value
     }
     store.dispatch(action)
-    // console.log("target.value ",e.target.value)
   }
   handleStoreChange() {
     console.log("store Change")
@@ -58,8 +57,14 @@ class TodoList extends Component {
       type: 'change_list_value',
       value: this.state.inputValue
     }
-    this.state.inputValue = ''
-    console.log('inputValue  ',this.state.inputValue)
+    store.dispatch(action)
+  }
+
+  handleItemDelete(index) {
+    const action = {
+      type: 'delete_todo_item',
+      index
+    }
     store.dispatch(action)
   }
 }
