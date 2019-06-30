@@ -12,6 +12,23 @@ store.getState  获取到store里面所有的数据内容
 
 store.subscribe  可以让我们订阅(监听) store的改变 只要store发生改变， 这个方法的回调函数就会执行。
 
+
+
+#### react学习
+
+1. 尽量将UI组件与容器组件分离开来。 UI组件内部只有一个render函数负责渲染页面。 容器组件负责其它函数及数据的逻辑操作。容器组件(父组件)与UI组件(子组件）通过props传递数据。 
+
+2. 如果UI组件只有render函数 可以把它定义为无状态组件。无状态函数创建的是无状态组件，它只是一种只负责展示的纯组件。
+
+   **使用无状态组件的好处**
+
+   - 无状态组件的简洁性
+   - 没有 this「由于使用的是箭头函数事件无需绑定」
+   - 便于测试
+   - 没有生命周期钩子，速度快。
+
+
+
 <<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
