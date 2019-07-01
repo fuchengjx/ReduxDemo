@@ -1,7 +1,7 @@
 const defaultState = {
   inputValue: 'defaultValue',
   list: ['wsdfio', 'jsiodfj', ' 563415634']
-  
+
 }
 
 // reducer 可以接受state， 但是绝对不能修改state
@@ -23,5 +23,9 @@ export default (state = defaultState, action) => {  //state指的应该是上次
     newState.list.splice(action.index, 1)
     return newState;
   }
-  return state;
+  if (action.type === 'init_list_action') {
+    const newState = JSON.parse(JSON.stringify(state))
+    newState.list.push(action.data)
+  }
+    return state;
 }

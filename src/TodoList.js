@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import store from './store/store';
 import TodolistUI from './TodoListUI';
 // import { CHANGE_INPUT_VALUE, ADD_TODO_ITEM, DELETE_TODO_ITEM} from './store/actionTypes'
-import { getInputChangeAction, getAddItemAction, getDeleteItemAction} from './store/actionCreators'
+import {getTodoList, getInputChangeAction, getAddItemAction, getDeleteItemAction} from './store/actionCreators'
 
 class TodoList extends Component {
   constructor(props) {
@@ -25,6 +25,13 @@ class TodoList extends Component {
         handleItemDelete={this.handleItemDelete}
         />
     )
+  }
+
+  componentDidMount() {
+    console.log("DidMount")  //生命周期里放入异步函数  会越来越臃肿   所以引入redux-thunk  action可以返回一个函数 而不单单是一个对象。
+    const action = getTodoList();  // 创建一个 action函数
+    store.dispatch(action)
+    console.log(action)
   }
 
   handleInputChange(e) {
