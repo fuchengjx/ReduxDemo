@@ -14,6 +14,10 @@ store.subscribe  可以让我们订阅(监听) store的改变 只要store发生�
 
 
 
+redux-thunk中间件 可以使action返回的不单单只是一个对象，还可以是一个函数
+
+![](https://raw.githubusercontent.com/fuchengjx/Todolist/master/)
+
 #### react学习
 
 1. 尽量将UI组件与容器组件分离开来。 UI组件内部只有一个render函数负责渲染页面。 容器组件负责其它函数及数据的逻辑操作。容器组件(父组件)与UI组件(子组件）通过props传递数据。 

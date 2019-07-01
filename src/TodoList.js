@@ -31,7 +31,7 @@ class TodoList extends Component {
     console.log("DidMount")  //生命周期里放入异步函数  会越来越臃肿   所以引入redux-thunk  action可以返回一个函数 而不单单是一个对象。
     const action = getTodoList();  // 创建一个 action函数
     store.dispatch(action)
-    console.log(action)
+    // console.log(action)
   }
 
   handleInputChange(e) {
