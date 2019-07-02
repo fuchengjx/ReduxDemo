@@ -16,7 +16,7 @@ store.subscribe  可以让我们订阅(监听) store的改变 只要store发生�
 
 redux-thunk中间件 可以使action返回的不单单只是一个对象，还可以是一个函数
 
-![](https://raw.githubusercontent.com/fuchengjx/Todolist/master/)
+![]([https://github.com/fuchengjx/ReduxDemo/blob/master/img/redux%20data%20flow.png](https://github.com/fuchengjx/ReduxDemo/blob/master/img/redux data flow.png))
 
 #### react学习
 
