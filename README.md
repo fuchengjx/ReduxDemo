@@ -1,8 +1,53 @@
 ### 简介
 
-
 <<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+
+遇到一个很奇怪的问题，就是 列表渲染的 绑定的事件自动执行。  在触发其它事件时，this.props.handleDeleteItem 函数会自动被触发。(事件冒泡吗？)
+
+```
+   <div>
+        <div>
+          <input value={this.props.inputValue} onChange={ this.props.changeInputValue }></input>
+          <button onClick={this.props.handleBtnClick.bind(this)}>提交</button>
+        </div>
+        <ul>
+          {
+            this.props.list.map((item, index) => {
+              return ( <li key={index} onClick={this.props.handleDeleteItem(index)}>{item}</li>)
+            })
+          }
+        </ul>
+   </div>
+```
+
+
+
+**解决方案**
+
+```
+      {
+            this.props.list.map((item, index) => {
+              return ( <li key={index} onClick={ () => {
+              	this.props.handleDeleteItem(index)
+              }}</li>)
+            })
+       }
+```
+
+
+
+```
+ {
+            this.props.list.map((item, index) => {
+              return ( <li key={index} onClick={ this.props.handleDeleteItem.bind(this, index) }>{item}</li>)
+            })
+  }
+```
+
+
 
 ## Available Scripts
 
