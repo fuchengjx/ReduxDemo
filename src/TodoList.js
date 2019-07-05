@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'  //引用的只是react-redux里的部分，所以要用解构赋值
+import { getInputChangeAction, getAddItemAction, getDeleteItemAction} from './store/actionCreators'
 class TodoList extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +26,6 @@ class TodoList extends Component {
     )
   }
 
- 
 
 }
 
@@ -43,28 +43,29 @@ const mapStateToProps = (state) => {  //state参数里的数据就是store内的
 const mapDispatchToProps = (dispatch) => {
   return {
     changeInputValue(e) {
-      const action = {
-        type: 'change_input_value',
-        value: e.target.value
-      }
+      // const action = {
+      //   type: 'change_input_value',
+      //   value: e.target.value
+      // }
+      const action = getInputChangeAction(e.target.value)
       dispatch(action)
     },
 
     handleBtnClick() {
-      console.log(this.props.list)
-      // console.log(this.props.inputValue)
-      const action = {
-        type: 'add_todo_item',
-        // value: this.props.inputValue
-      }
+      // const action = {
+      //   type: 'add_todo_item',
+      //   // value: this.props.inputValue
+      // }
+      const action = getAddItemAction(this.props.inputValue)
       dispatch(action)
     },
 
     handleDeleteItem: (index) => {
-      const action = {
-        type: 'delete_item',
-        index
-      }
+      // const action = {
+      //   type: 'delete_item',
+      //   index
+      // }
+      const action = getDeleteItemAction(index)
       dispatch(action)
     }
   }
